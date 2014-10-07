@@ -1,13 +1,12 @@
 package org.hibernate.cfg.reveng.dialect;
 
+import org.hibernate.mapping.Table;
+
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import org.hibernate.mapping.Table;
 
 /**
  * MetaData dialect that uses standard JDBC for reading metadata.
@@ -112,6 +111,7 @@ public class JDBCMetaDataDialect extends AbstractMetaDataDialect {
 					element.put("COLUMN_SIZE", new Integer(rs.getInt("COLUMN_SIZE")));
 					element.put("DECIMAL_DIGITS", new Integer(rs.getInt("DECIMAL_DIGITS")));
 					element.put("REMARKS", rs.getString("REMARKS"));
+                    element.put("IS_AUTOINCREMENT", "YES".equals(rs.getString("IS_AUTOINCREMENT")));
 					return element;					
 				}
 				protected Throwable handleSQLException(SQLException e) {

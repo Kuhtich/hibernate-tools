@@ -779,7 +779,8 @@ public class JDBCBinder {
 
 		SimpleValue value = bindColumnToSimpleValue( table, column, mapping, false );
 
-		return makeProperty(TableIdentifier.create( table ), propertyName, value, true, true, false, null, null);
+		return makeProperty(TableIdentifier.create( table ), propertyName, value, !column.isUnique(),
+                !column.isUnique(), false, null, null);
 	}
 
 	private SimpleValue bindColumnToSimpleValue(Table table, Column column, Mapping mapping, boolean generatedIdentifier) {
