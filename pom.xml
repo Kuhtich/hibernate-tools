@@ -11,7 +11,7 @@
 
 	<groupId>org.hibernate</groupId>
 	<artifactId>hibernate-tools</artifactId>
-	<version>4.3.1.CR1</version>
+	<version>4.3.2.SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Hibernate Tools</name>
@@ -812,8 +812,8 @@
 			<id>mssql2008</id>
 			<properties>
 				<jdbc.driver.groupId>com.microsoft.sqlserver</jdbc.driver.groupId>
-				<jdbc.driver.artifactId>msjdbc</jdbc.driver.artifactId>
-				<jdbc.driver.jdbc.driver.version>2.0.1008.2</jdbc.driver.jdbc.driver.version>
+				<jdbc.driver.artifactId>sqljdbc4</jdbc.driver.artifactId>
+				<jdbc.driver.jdbc.driver.version>4.0</jdbc.driver.jdbc.driver.version>
 				<db.dialect>org.hibernate.dialect.SQLServerDialect</db.dialect>
 				<jdbc.driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc.driver>
 				<jdbc.url>jdbc:sqlserver://vmg04.mw.lab.eng.bos.redhat.com:1433</jdbc.url>
