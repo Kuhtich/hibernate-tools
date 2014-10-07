@@ -1,5 +1,14 @@
 package org.hibernate.tool.hbm2x.pojo;
 
+import org.hibernate.cfg.Configuration;
+import org.hibernate.id.MultipleHiLoPerTableGenerator;
+import org.hibernate.id.PersistentIdentifierGenerator;
+import org.hibernate.internal.util.StringHelper;
+import org.hibernate.internal.util.collections.JoinedIterator;
+import org.hibernate.mapping.*;
+import org.hibernate.tool.hbm2x.Cfg2JavaTool;
+import org.hibernate.type.ForeignKeyDirection;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -9,32 +18,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.StringTokenizer;
-
-import org.hibernate.cfg.Configuration;
-import org.hibernate.id.MultipleHiLoPerTableGenerator;
-import org.hibernate.id.PersistentIdentifierGenerator;
-import org.hibernate.mapping.Collection;
-import org.hibernate.mapping.Column;
-import org.hibernate.mapping.Component;
-import org.hibernate.mapping.Formula;
-import org.hibernate.mapping.KeyValue;
-import org.hibernate.mapping.ManyToOne;
-import org.hibernate.mapping.OneToMany;
-import org.hibernate.mapping.OneToOne;
-import org.hibernate.mapping.PersistentClass;
-import org.hibernate.mapping.Property;
-import org.hibernate.mapping.RootClass;
-import org.hibernate.mapping.Selectable;
-import org.hibernate.mapping.SimpleValue;
-import org.hibernate.mapping.Subclass;
-import org.hibernate.mapping.Table;
-import org.hibernate.mapping.ToOne;
-import org.hibernate.mapping.UniqueKey;
-import org.hibernate.mapping.Value;
-import org.hibernate.tool.hbm2x.Cfg2JavaTool;
-import org.hibernate.type.ForeignKeyDirection;
-import org.hibernate.internal.util.collections.JoinedIterator;
-import org.hibernate.internal.util.StringHelper;
 
 public class EntityPOJOClass extends BasicPOJOClass {
 
@@ -252,6 +235,11 @@ public class EntityPOJOClass extends BasicPOJOClass {
 							//	TODO HA does not support initialValue and allocationSize
 						wholeString.append( builder.getResult() );
 					}
+                    else if ( "auto".equals( strategy ) ) {
+                        builder.resetAnnotation( importType("javax.persistence.GeneratedValue") );
+                        builder.addAttribute( "strategy", staticImport("javax.persistence.GenerationType", "AUTO" ) );
+                        idResult.append(builder.getResult());
+                    }
 					else if ( MultipleHiLoPerTableGenerator.class.getName().equals( strategy ) ) {
 						builder.resetAnnotation( importType("javax.persistence.GeneratedValue") )
 						.addAttribute( "strategy", staticImport("javax.persistence.GenerationType", "TABLE" ) )
