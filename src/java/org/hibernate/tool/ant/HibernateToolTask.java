@@ -37,7 +37,7 @@ public class HibernateToolTask extends Task {
 	private Path templatePath;
 	private Properties properties = new Properties(); 	
 	
-	private void checkConfiguration() {
+	protected void checkConfiguration() {
 		if(configurationTask!=null) {
 			throw new BuildException("Only a single configuration is allowed.");
 		}
