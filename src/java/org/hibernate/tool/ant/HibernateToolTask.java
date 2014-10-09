@@ -4,12 +4,6 @@
  */
 package org.hibernate.tool.ant;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-
 import org.apache.tools.ant.AntClassLoader;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
@@ -21,6 +15,12 @@ import org.hibernate.MappingNotFoundException;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.internal.util.StringHelper;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+
 /**
  * @author max
  *
@@ -30,7 +30,7 @@ public class HibernateToolTask extends Task {
 	public HibernateToolTask() {
 		super();
 	}
-	ConfigurationTask configurationTask;
+	protected ConfigurationTask configurationTask;
 	private File destDir;
 	private List generators = new ArrayList();
 	private Path classPath;
