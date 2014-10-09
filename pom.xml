@@ -24,9 +24,9 @@
 	</issueManagement>
 
 	<scm>
-	  <connection>scm:git:git://github.com/hibernate/hibernate-tools.git</connection>
-	  <developerConnection>scm:git:git@github.com:hibernate/hibernate-tools.git</developerConnection>
-	  <url>http://github.com/hibernate/hibernate-tools</url>
+	  <connection>scm:git:git://github.com/Kuhtich/hibernate-tools.git</connection>
+	  <developerConnection>scm:git:git@github.com:Kuhtich/hibernate-tools.git</developerConnection>
+	  <url>https://github.com/Kuhtich/hibernate-tools</url>
 	</scm>
 
 	<organization>
