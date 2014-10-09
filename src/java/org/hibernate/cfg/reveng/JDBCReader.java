@@ -630,7 +630,7 @@ public class JDBCReader {
 				//column.setSqlType(sqlTypeName);
 				column.setComment(comment);
 				column.setSqlTypeCode(new Integer(sqlType) );
-                column.setUnique((Boolean) columnRs.get("IS_AUTOINCREMENT"));
+
                 if(intBounds(size) ) {
                 	if(JDBCToHibernateTypeHelper.typeHasLength(sqlType) ) {
                 		column.setLength(size);

@@ -152,6 +152,13 @@ public class DelegatingReverseEngineeringStrategy implements ReverseEngineeringS
 			TableIdentifier referencedTable, List referencedColumnNames,
 			boolean uniqueReference) {
 		return delegate==null?null:delegate.foreignKeyToInverseEntityName(keyname, fromTable, fromColumnNames, referencedTable, referencedColumnNames, uniqueReference);
-	}	
-	
+	}
+
+    public boolean columnInsertable(TableIdentifier table, String column) {
+        return delegate == null || delegate.columnInsertable(table, column);
+    }
+
+    public boolean columnUpdateable(TableIdentifier table, String column) {
+        return delegate == null || delegate.columnUpdateable(table, column);
+    }
 }

@@ -1,5 +1,13 @@
 package org.hibernate.cfg.reveng;
 
+import org.hibernate.internal.util.StringHelper;
+import org.hibernate.mapping.Column;
+import org.hibernate.mapping.ForeignKey;
+import org.hibernate.mapping.PrimaryKey;
+import org.hibernate.mapping.Table;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.beans.Introspector;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,14 +17,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.hibernate.mapping.Column;
-import org.hibernate.mapping.ForeignKey;
-import org.hibernate.mapping.PrimaryKey;
-import org.hibernate.mapping.Table;
-import org.hibernate.internal.util.StringHelper;
 
 public class DefaultReverseEngineeringStrategy implements ReverseEngineeringStrategy {
 
@@ -355,6 +355,11 @@ public class DefaultReverseEngineeringStrategy implements ReverseEngineeringStra
 		return null;
 	}
 
-	
-	
+    public boolean columnInsertable(TableIdentifier table, String column) {
+        return true;
+    }
+
+    public boolean columnUpdateable(TableIdentifier table, String column) {
+        return true;
+    }
 }

@@ -649,7 +649,6 @@ public class JDBCBinder {
 		if(naturalId) {
 			id.setNullValue("undefined");
 		}
-
 		Property property = makeProperty(tableIdentifier, makeUnique(rc,idPropertyname), id, true, true, false, null, null);
 		rc.setIdentifierProperty(property);
 		rc.setIdentifier(id);
@@ -776,11 +775,13 @@ public class JDBCBinder {
 	}
 
 	private Property bindBasicProperty(String propertyName, Table table, Column column, Set processedColumns, Mapping mapping) {
-
 		SimpleValue value = bindColumnToSimpleValue( table, column, mapping, false );
+        TableIdentifier tableIdentifier = new TableIdentifier(table.getCatalog(), table.getSchema(), table.getName());
 
-		return makeProperty(TableIdentifier.create( table ), propertyName, value, !column.isUnique(),
-                !column.isUnique(), false, null, null);
+        boolean insert = revengStrategy.columnInsertable(tableIdentifier, column.getName());
+        boolean update = revengStrategy.columnUpdateable(tableIdentifier, column.getName());
+		return makeProperty(TableIdentifier.create( table ), propertyName, value, insert,
+                update, false, null, null);
 	}
 
 	private SimpleValue bindColumnToSimpleValue(Table table, Column column, Mapping mapping, boolean generatedIdentifier) {

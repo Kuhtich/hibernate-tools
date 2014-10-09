@@ -1,7 +1,3 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
 import org.hibernate.cfg.reveng.AssociationInfo;
 import org.hibernate.cfg.reveng.ReverseEngineeringRuntimeInfo;
 import org.hibernate.cfg.reveng.ReverseEngineeringSettings;
@@ -9,6 +5,10 @@ import org.hibernate.cfg.reveng.ReverseEngineeringStrategy;
 import org.hibernate.cfg.reveng.TableIdentifier;
 import org.hibernate.mapping.ForeignKey;
 import org.hibernate.mapping.Table;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * noop naming strategy for testing validation of parameters in ant test.
@@ -189,4 +189,14 @@ public class NoopReverseEngineeringStrategy implements ReverseEngineeringStrateg
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+    public boolean columnInsertable(TableIdentifier table, String column) {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    public boolean columnUpdateable(TableIdentifier table, String column) {
+        // TODO Auto-generated method stub
+        return true;
+    }
 }

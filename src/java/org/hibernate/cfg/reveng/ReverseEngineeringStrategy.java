@@ -196,5 +196,8 @@ public interface ReverseEngineeringStrategy {
 
 	public AssociationInfo foreignKeyToAssociationInfo(ForeignKey foreignKey);
 	public AssociationInfo foreignKeyToInverseAssociationInfo(ForeignKey foreignKey);
-		
+
+    public boolean columnInsertable(TableIdentifier table, String column);
+    public boolean columnUpdateable(TableIdentifier table, String column);
+
 }

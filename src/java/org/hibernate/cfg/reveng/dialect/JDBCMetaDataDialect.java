@@ -111,8 +111,7 @@ public class JDBCMetaDataDialect extends AbstractMetaDataDialect {
 					element.put("COLUMN_SIZE", new Integer(rs.getInt("COLUMN_SIZE")));
 					element.put("DECIMAL_DIGITS", new Integer(rs.getInt("DECIMAL_DIGITS")));
 					element.put("REMARKS", rs.getString("REMARKS"));
-                    element.put("IS_AUTOINCREMENT", "YES".equals(rs.getString("IS_AUTOINCREMENT")));
-					return element;					
+					return element;
 				}
 				protected Throwable handleSQLException(SQLException e) {
 					throw getSQLExceptionConverter().convert(e, "Error while reading column meta data for " + Table.qualify(catalog, schema, table), null);

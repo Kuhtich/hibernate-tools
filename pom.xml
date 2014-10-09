@@ -11,7 +11,7 @@
 
 	<groupId>org.hibernate</groupId>
 	<artifactId>hibernate-tools</artifactId>
-	<version>4.3.2.SNAPSHOT</version>
+	<version>4.3.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Hibernate Tools</name>
@@ -479,14 +479,18 @@
 		</pluginManagement>
 	</build>
 
-	<repositories>
-		<!--
-			To build Hibernate Tools Core you have to add the JBoss Maven
-			repository to your settings.xml See also
-			http://community.jboss.org/wiki/ContributingtoHibernateSearch
-		-->
-	</repositories>
-
+	<distributionManagement>
+        <repository>
+            <id>yandex_qa_releases</id>
+            <name>Releases</name>
+            <url>${releases-repo}</url>
+        </repository>
+        <snapshotRepository>
+            <id>yandex_qa_snapshots</id>
+            <name>Snapshots</name>
+            <url>${snapshots-repo}</url>
+        </snapshotRepository>
+	</distributionManagement>
 
 	<profiles>
 		
